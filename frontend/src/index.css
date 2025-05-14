@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --black: #000000;
+  --dark-gray: #333333;
+  --gray: #666666;
+  --light-gray: #999999;
+  --lighter-gray: #eeeeee;
+  --white: #ffffff;
+  --off-white: #f7f7f7;
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
+  --font-xs: 0.75rem;
+  --font-sm: 0.875rem;
+  --font-md: 1rem;
+  --font-lg: 1.125rem;
+  --font-xl: 1.5rem;
+  --font-xxl: 2rem;
+  --transition: 0.2s ease;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--dark-gray);
+  background-color: var(--off-white);
+  line-height: 1.5;
+  font-size: var(--font-md);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--black);
+  margin-bottom: var(--spacing-md);
+}
+
+h1 { font-size: var(--font-xxl); }
+h2 { font-size: var(--font-xl); }
+h3 { font-size: var(--font-lg); }
+h4 { font-size: var(--font-md); }
+h5 { font-size: var(--font-sm); letter-spacing: 0.5px; text-transform: uppercase; }
+
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+a {
+  color: var(--dark-gray);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--black);
+}
+
+button {
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom button styles */
+.btn {
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: 1px solid var(--dark-gray);
+  background: transparent;
+  color: var(--dark-gray);
+  font-size: var(--font-sm);
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--dark-gray);
+  color: var(--white);
+}
+
+.btn-primary {
+  background: var(--dark-gray);
+  color: var(--white);
+  border: 1px solid var(--dark-gray);
+}
+
+.btn-primary:hover {
+  background: var(--black);
+  border-color: var(--black);
+}
+
+/* Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+/* Cards */
+.card {
+  background: var(--white);
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: var(--shadow);
+}
+
+.card-body {
+  padding: var(--spacing-xl);
+}
+
+/* Nav */
+.navbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--lighter-gray);
+  padding: var(--spacing-md) 0;
+}
+
+.navbar-brand {
+  font-weight: 500;
+  color: var(--black);
+}
+
+/* Forms */
+input, textarea, select {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--lighter-gray);
+  background-color: var(--white);
+  color: var(--dark-gray);
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font-md);
+  width: 100%;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--gray);
+}
+
+label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  color: var(--dark-gray);
+  font-size: var(--font-sm);
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--spacing-xl);
+}
+
+th, td {
+  padding: var(--spacing-md);
+  text-align: left;
+  border-bottom: 1px solid var(--lighter-gray);
+}
+
+th {
+  font-weight: 500;
+  color: var(--black);
+}
+
+/* Utilities */
+.text-center { text-align: center; }
+.text-muted { color: var(--light-gray); }
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: var(--spacing-xs); }
+.mb-2 { margin-bottom: var(--spacing-sm); }
+.mb-3 { margin-bottom: var(--spacing-md); }
+.mb-4 { margin-bottom: var(--spacing-lg); }
+.mb-5 { margin-bottom: var(--spacing-xl); }
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: var(--spacing-xs); }
+.mt-2 { margin-top: var(--spacing-sm); }
+.mt-3 { margin-top: var(--spacing-md); }
+.mt-4 { margin-top: var(--spacing-lg); }
+.mt-5 { margin-top: var(--spacing-xl); }
+.py-0 { padding-top: 0; padding-bottom: 0; }
+.py-1 { padding-top: var(--spacing-xs); padding-bottom: var(--spacing-xs); }
+.py-2 { padding-top: var(--spacing-sm); padding-bottom: var(--spacing-sm); }
+.py-3 { padding-top: var(--spacing-md); padding-bottom: var(--spacing-md); }
+.py-4 { padding-top: var(--spacing-lg); padding-bottom: var(--spacing-lg); }
+.py-5 { padding-top: var(--spacing-xl); padding-bottom: var(--spacing-xl); }
+.px-0 { padding-left: 0; padding-right: 0; }
+.px-1 { padding-left: var(--spacing-xs); padding-right: var(--spacing-xs); }
+.px-2 { padding-left: var(--spacing-sm); padding-right: var(--spacing-sm); }
+.px-3 { padding-left: var(--spacing-md); padding-right: var(--spacing-md); }
+.px-4 { padding-left: var(--spacing-lg); padding-right: var(--spacing-lg); }
+.px-5 { padding-left: var(--spacing-xl); padding-right: var(--spacing-xl); }
+
+/* Custom components */
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  font-size: var(--font-xs);
+  font-weight: 500;
+  background-color: var(--lighter-gray);
+  color: var(--dark-gray);
+}
+
+.badge-primary {
+  background-color: var(--dark-gray);
+  color: var(--white);
+}
+
+/* Status colors (keep minimal) */
+.text-success { color: #2d7c4e; }
+.text-danger { color: #d63031; }
+.text-warning { color: #f39c12; }
+
+.bg-success { background-color: #edf7f0; }
+.bg-danger { background-color: #fdeeee; }
+.bg-warning { background-color: #fef5e7; }
+
+/* For tasks and cards */
+.task-card {
+  display: flex;
+  align-items: flex-start;
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+  background-color: var(--white);
+  border-left: 3px solid transparent;
+  box-shadow: var(--shadow);
+}
+
+.task-card.task-pending {
+  border-left-color: var(--light-gray);
+}
+
+.task-card.task-progress {
+  border-left-color: #f39c12;
+}
+
+.task-card.task-completed {
+  border-left-color: #2d7c4e;
+}
+
+.task-card.task-high {
+  border-left-color: #d63031;
+}
+
+/* App container */
+.app-container {
+  padding-top: 70px; /* For fixed navbar */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  :root {
+    --font-xxl: 1.75rem;
+    --font-xl: 1.25rem;
+    --spacing-xxl: 2rem;
+  }
+  
+  .card-body {
+    padding: var(--spacing-lg);
+  }
+}
