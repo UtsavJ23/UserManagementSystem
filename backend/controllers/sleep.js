@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Sleep = require('../models/sleep')
+const Sleep = require('../models/Sleep')
 const validator = require('validator')
 const ROLES_LIST = require('../config/rolesList')
 const moment = require('moment')
