@@ -19,7 +19,18 @@ const url = require('./config/url')
 const port = process.env.PORT || 4000
 const app = express()
 const server = http.createServer(app)
-const io = socketIo(server, { cors: { origin: url, methods: ['GET', 'POST' ] } })
+const io = socketIo(server, { 
+  cors: { 
+    origin: [
+      'https://scaleupaxis.live',
+      'https://www.scaleupaxis.live',
+      'https://saksham-user-project.netlify.app',
+      process.env.CLIENT_URL
+    ], 
+    methods: ['GET', 'POST'],
+    credentials: true
+  } 
+})
 
 connectDB()
 passportSetup()
