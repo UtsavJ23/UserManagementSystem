@@ -55,6 +55,7 @@ app.use(session({
 app.use(passport.initialize())
 
 app.use('/api/auth', require('./routes/auth'))
+app.use('/api/debug', require('./routes/debug'))
 
 app.use(requireAuth)
 setupSocket(io)

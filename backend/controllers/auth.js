@@ -35,7 +35,13 @@ exports.login = async (req, res, next) => {
     
     if(persist){
       const refreshToken = generateRefreshToken(user._id)
-      res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'Lax', secure: true, maxAge: 7 * 24 * 60 * 60 * 1000 })
+      // Allow secure cookies in production, but regular cookies in development
+      res.cookie('jwt', refreshToken, { 
+        httpOnly: true, 
+        sameSite: 'Lax', 
+        secure: process.env.NODE_ENV === 'production', 
+        maxAge: 7 * 24 * 60 * 60 * 1000 
+      })
     }
 
     res.status(200).json(accessToken)
@@ -48,7 +54,12 @@ exports.googleLogin = (req, res, next) => {
   try {
     if(req.session.persist){
       const refreshToken = generateRefreshToken(req.user._id)
-      res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'Lax', secure: true, maxAge: 7 * 24 * 60 * 60 * 1000 })
+      res.cookie('jwt', refreshToken, { 
+        httpOnly: true, 
+        sameSite: 'Lax', 
+        secure: process.env.NODE_ENV === 'production', 
+        maxAge: 7 * 24 * 60 * 60 * 1000 
+      })
       delete req.session.persist
     }
     
@@ -133,10 +144,10 @@ exports.refresh = async (req, res, next) => {
       decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET)
     } catch (jwtError) {
       if (jwtError instanceof jwt.TokenExpiredError) {
-        res.clearCookie('jwt', { httpOnly: true, sameSite: 'Lax', secure: true })
+        res.clearCookie('jwt', { httpOnly: true, sameSite: 'Lax', secure: process.env.NODE_ENV === 'production' })
         throw new CustomError('Forbidden token expired', 403)
       } else if (jwtError instanceof jwt.JsonWebTokenError) {
-        res.clearCookie('jwt', { httpOnly: true, sameSite: 'Lax', secure: true })
+        res.clearCookie('jwt', { httpOnly: true, sameSite: 'Lax', secure: process.env.NODE_ENV === 'production' })
         throw new CustomError('Invalid token', 403)
       } else {
         throw new CustomError('Token verification failed', 403)
@@ -170,7 +181,7 @@ exports.logout = async (req, res, next) => {
   try {
     const token = req.cookies.jwt
     if (!token) return res.sendStatus(204)
-    res.clearCookie('jwt', { httpOnly: true, sameSite: 'Lax', secure: true })
+    res.clearCookie('jwt', { httpOnly: true, sameSite: 'Lax', secure: process.env.NODE_ENV === 'production' })
     res.status(200).json({ error: 'Logout successful '})
   } catch (error) {
     next(error)

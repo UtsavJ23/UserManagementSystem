@@ -15,6 +15,8 @@ const useAxiosPrivate = () => {
                 // Always add the Authorization header if auth token exists
                 if (!config.headers['Authorization'] && auth?.accessToken) {
                     config.headers['Authorization'] = `Bearer ${auth.accessToken}`
+                    // Help with debugging authentication issues
+                    console.log('Adding auth token to request')
                 }
                 return config 
             }, (error) => Promise.reject(error)

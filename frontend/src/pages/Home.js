@@ -9,6 +9,7 @@ import useHandleUrlToken from '../hooks/useHandleUrlToken'
 import WeatherWidget from '../components/WeatherWidget'
 import QuoteWidget from '../components/QuoteWidget'
 import GoalsWidget from '../components/GoalsWidget'
+import AuthDebugger from '../components/AuthDebugger'
 
 const Home = () => {
     const { auth } = useAuthContext()
@@ -159,6 +160,7 @@ const Home = () => {
                     </div>
                 )}
             </div>
+            <AuthDebugger />
         </div>
     )
 }
